@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #525659; /* PDF viewer grey background */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Page Container (A4 Size) */
+.resume-container {
+    display: flex;
+    width: 210mm;
+    min-height: 297mm;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* Print CSS */
+@media print {
+    body {
+        background-color: #fff;
+        margin: 0;
+    }
+    .resume-container {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        min-height: 100%;
+        page-break-inside: avoid;
+    }
+    .page-break-after {
+        page-break-after: always;
+    }
+    .page-break-before {
+        page-break-before: always;
+        padding-top: 20mm;
+    }
+}
+
+/* Sidebar Styling (Left Column) */
+.sidebar {
+    width: 35%;
+    background-color: #2b3947;
+    color: #fff;
+    padding: 40px 30px;
+}
+
+.section-block {
+    margin-bottom: 25px;
+}
+
+.section-block.mt-xl {
+    margin-top: 35px;
+}
+
+.sidebar .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3b82f6; /* Blue accent line */
+    text-transform: uppercase;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.contact-icon {
+    margin-top: 3px;
+    font-size: 12px;
+}
+.red-icon {
+    color: #e74c3c;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skill-pill {
+    background-color: #3a4b5c;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cert-item {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.cert-item strong {
+    font-size: 12px;
+    color: #f1f2f6;
+}
+
+.edu-item {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+.edu-item strong {
+    font-size: 12px;
+}
+
+.personal-info {
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* Main Content Styling (Right Column) */
+.main-content {
+    width: 65%;
+    padding: 50px 40px;
+}
+
+.resume-header {
+    margin-bottom: 40px;
+    border-bottom: 3px solid #1c2833;
+    padding-bottom: 15px;
+}
+
+.name {
+    font-size: 32px;
+    color: #1c2833;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.role {
+    font-size: 18px;
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.main-section {
+    margin-bottom: 30px;
+}
+
+.main-title {
+    font-size: 16px;
+    color: #1c2833;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 15px;
+    letter-spacing: 0.5px;
+}
+
+.main-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    background-color: #3b82f6;
+}
+
+.paragraph {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    text-align: justify;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.job-header strong {
+    font-size: 14px;
+    color: #1c2833;
+}
+
+.company-name {
+    font-size: 13px;
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+.job-date {
+    font-size: 12.5px;
+    color: #4a4a4a;
+}
+
+.bullet-list {
+    padding-left: 20px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    list-style-type: disc;
+}
+.bullet-list li {
+    margin-bottom: 6px;
+}
+
+.project-card {
+    background-color: #f8f9f9;
+    border: 1px solid #e5e8e8;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.project-card strong {
+    display: block;
+    font-size: 13px;
+    color: #1c2833;
+    margin-bottom: 5px;
+}
+.project-card p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.declaration-text {
+    margin-bottom: 40px;
+}
+
+.signature {
+    font-size: 13px;
+    color: #1c2833;
+    margin-top: 30px;
+}
