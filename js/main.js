@@ -36,12 +36,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    // 3. Navbar Scroll Effect
+    // 3. Navbar Scroll Effect & Mobile Menu Logic
     const navbar = document.querySelector('.custom-navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) navbar.classList.add('scrolled');
         else navbar.classList.remove('scrolled');
     });
+
+    const navbarCollapse = document.getElementById('navbarNav');
+    if (navbarCollapse) {
+        // Prevent background scrolling when menu is open
+        navbarCollapse.addEventListener('show.bs.collapse', () => {
+            document.body.style.overflow = 'hidden';
+            if (lenis) lenis.stop(); // Stop Lenis scroll
+        });
+        navbarCollapse.addEventListener('hide.bs.collapse', () => {
+            document.body.style.overflow = '';
+            if (lenis) lenis.start(); // Start Lenis scroll
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navbarCollapse.querySelectorAll('.nav-link, .btn');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+    }
 
     // 4. Hero Image 3D Tilt Effect
     const heroImageWrapper = document.querySelector('.hero-image-wrapper');

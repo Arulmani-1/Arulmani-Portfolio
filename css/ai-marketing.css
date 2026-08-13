@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #3b82f6; /* Blue-500 */
+  --accent-hover: #60a5fa; /* Blue-400 */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #020617; /* Slate-950 fallback */
+  color: #f8fafc; /* Slate-50 */
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Scroll-Scrubbed Video Canvas Engine & Media Crossfade Transitions
+   ========================================================================== */
+#scroll-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: #000;
+  pointer-events: none;
+}
+
+#scroll-video-container canvas,
+#scroll-video-container video,
+#scroll-video-container .poster-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#scroll-video-container video {
+  display: none; /* We only use it as a source for the canvas */
+}
+
+/* Media Crossfade Transitions */
+#scroll-video-container .poster-img {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+  z-index: 1;
+}
+
+#scroll-video-container canvas {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+  z-index: 2;
+}
+
+#scroll-video-container.video-ready .poster-img {
+  opacity: 0;
+}
+
+#scroll-video-container.video-ready canvas {
+  opacity: 1;
+}
+
+/* Gradient overlay for better text readability */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3), rgba(2, 6, 23, 0.8));
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Glassmorphism Utilities
+   ========================================================================== */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-nav {
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ==========================================================================
+   Staggered IntersectionObserver Reveal
+   ========================================================================== */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(2rem); /* translate-y-8 (approx 32px) */
+  will-change: transform, opacity;
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-element.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Interactive Hover & Lift Micro-Interactions
+   ========================================================================== */
+.hover-lift {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15); /* Soft accent glow */
+}
+
+/* CTA button background opacity and color shifts */
+.btn-cinematic {
+  background-color: rgba(59, 130, 246, 0.8); /* Accent with opacity */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 300ms ease;
+  backdrop-filter: blur(8px);
+}
+
+.btn-cinematic:hover {
+  background-color: rgba(59, 130, 246, 1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Capability row chevron horizontal translation nudge */
+.capability-row {
+  transition: background-color 300ms ease;
+  cursor: pointer;
+}
+
+.capability-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.capability-row .chevron-icon {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.capability-row:hover .chevron-icon {
+  transform: translateX(4px);
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
